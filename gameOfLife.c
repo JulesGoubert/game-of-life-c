@@ -6,7 +6,7 @@
 #define HEIGHT 25
 #define BACKGROUND '-'
 #define CELL '#'
-#define SPEED 500
+#define SPEED 200
 
 typedef enum {
     DEAD, 
@@ -78,20 +78,15 @@ void genNext() {
 
 int main() {
     initGrid();
-    for (int i = 0; i < WIDTH / 3; i++) {
-        for (int j = 0; j < HEIGHT / 3; j++) {
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
             grid[i][j].state = ALIVE;
         }
     }
-    printf("Initial state\n");
-    int aliveCells = printGrid();
-    int prevAliveCells = 0;
-    while (aliveCells > 0 && aliveCells != prevAliveCells) {
-        genNext();
-        prevAliveCells = aliveCells;
-        aliveCells = printGrid();
+    while (printGrid() > 0) {
         usleep(SPEED * 1000);
         system("clear");
+        genNext();
     }
     return 0;
 }

@@ -2,7 +2,7 @@
 
 sources := $(wildcard %.c)
 objects := $(patsubst %.c, %.o, $(sources))
-executables := malloc gameOfLife
+executables := gameOfLife
 
 CC := gcc
 CFLAGS := -Wall -O
